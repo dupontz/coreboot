@@ -21,23 +21,26 @@ void mainboard_memory_init_params(FSPM_UPD *mupd)
 	const bool half_populated = false;
         memcfg_init(mupd, &mem_type, &spd_info, half_populated);
 
-	// FSP Configuration
-	mupd->FspmConfig.UserBd = 1;
-	mupd->FspmConfig.SmbusEnable = 1;
-	mupd->FspmConfig.SmbusDynamicPowerGating = 1;
-	mupd->FspmConfig.PchIshEnable = 1;
-	mupd->FspmConfig.DmiMaxLinkSpeed = 4;
-	mupd->FspmConfig.BdatEnable = 1;
-	mupd->FspmConfig.BdatTestType = 1;
+        // FSP Configuration
+        mupd->FspmConfig.UserBd = 1;
+        mupd->FspmConfig.SmbusEnable = 1;
+        mupd->FspmConfig.SmbusDynamicPowerGating = 1;
+        mupd->FspmConfig.PchIshEnable = 1;
+        mupd->FspmConfig.BdatEnable = 1;
+        mupd->FspmConfig.BdatTestType = 1;
+        mupd->FspmConfig.DmiMaxLinkSpeed = 3;
+        mupd->FspmConfig.DmaControlGuarantee = 0;
 
-	// Performance settings
-	mupd->FspmConfig.VtdDisable = 0;
-	mupd->FspmConfig.VmxEnable = 1;
-	mupd->FspmConfig.HyperThreading = 1;
-	mupd->FspmConfig.EnableAbove4GBMmio = 1;
-	mupd->FspmConfig.OcSupport = 1;
-	mupd->FspmConfig.OcLock = 0;
-	mupd->FspmConfig.SaOcSupport = 1;
+        // Performance settings
+        mupd->FspmConfig.VtdDisable = 0;
+        mupd->FspmConfig.VtdIgdEnable = 0;
+        mupd->FspmConfig.VmxEnable = 1;
+        mupd->FspmConfig.HyperThreading = 1;
+        mupd->FspmConfig.EnableAbove4GBMmio = 1;
+        mupd->FspmConfig.OcSupport = 1;
+        mupd->FspmConfig.OcLock = 0;
+        mupd->FspmConfig.SaOcSupport = 1;
+	mupd->FspmConfig.CpuBclkSpread = 0;
 
 	/* XMP Configuration - Not functional yet! - Will result in FspNotify error 0x80000007! */
 	// mupd->FspmConfig.SpdProfileSelected = 2;	
